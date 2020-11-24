@@ -1,37 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
-const n = 6;
+ void binsearch( int *p, int l,int r,int n){
+     int m;
+     m = (l+r)/2;
+     if (l>r){
+        printf(-1);
+     }else{
+     if(p[m]==n){
+        printf("%d",m);
+     }
+     if(p[m]>n){
+        binsearch(p,l,m-1,n);
+     }
+     if(p[m]<n){
+        binsearch(p,m+1,r,n);
+     }
+     }
+}
 int main()
 {
-    int a[n];
-    int l,i,j,k,m;
-    m = 0;
-    printf("vvedite 6 elementov massiva");
-    for (i = 0;i<n;i++){
-        scanf("%d",&a[i]);
+    int i,n,a,m;
+    int *pa;
+    printf("vvedite  kol-vo elementov,elementi,zatem element,kotorii nado naiti");
+    scanf("%d",&n);
+    pa = (int*) malloc(n*sizeof(int));
+    for(i = 0;i < n;i++){
+     scanf("%d",&pa[i]);
     }
-for(i = 0;i<n-1;i++){
-
-for (j =i+1;j<n;j++){
-        if(m>n){
-                break;
-            }
-    if(a[i]==a[j]){
-            m++;
-        for(k = j;k<n;k++){
-                if(k == n-1){
-                    a[k]=0;
-                }else{
-            a[k]=a[k+1];
-                }
-
-        }
-    j--;
-    }
-}
-}
-    for(i =0;i<n;i++){
-        printf("%d ",a[i]);
-    }
+    scanf("%d",&a);
+    binsearch(pa,0,n-1,a);
     return 0;
 }
